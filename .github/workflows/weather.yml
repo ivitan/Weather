@@ -21,7 +21,7 @@ jobs:
           pip install -r requirements.txt
       - name: 'Working'
         env:
-          apiID: ${{ secrets.API_ID }}
-          appSecret: ${{ secrets.APP_Secret }}
+          apiID: ${{ secrets.APIID }}
+          appSecret: ${{ secrets.APPSECRET }}
           SCKEY: ${{ secrets.SCKEY }}
         run: python weather.py

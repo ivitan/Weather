@@ -7,8 +7,8 @@ def GetWeather(ct):
     # 天气接口
     url="https://tianqiapi.com/api"
     # 参数
-    apiID = os.environ['API_ID']
-    appSecret = os.environ['APP_Secret']
+    apiID = os.environ['apiID']
+    appSecret = os.environ['appSecret']
     data={}
     data['version']='v6'
     data['appid']= apiID
