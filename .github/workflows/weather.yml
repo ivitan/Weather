@@ -22,4 +22,4 @@ jobs:
       - name: 'Working'
         env:
           SCKEY: ${{ secrets.SCKEY }}
-        run: python Weather/weather.py
+        run: python weather.py
