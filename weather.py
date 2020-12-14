@@ -38,8 +38,8 @@ def GetWeather(ct):
 
 
 
-    text = week+' '+wea
-    weather = '- '+city+wea+'\n'+'- '+tem2+'℃ ~'+tem1+'℃'+'\n'+'- '+'空气质量：'+air+'\n'+'- '+'PM2.5：'+pm
+    text = week+','+wea
+    weather = '- '+city+','+wea+'\n'+'- '+tem2+'℃ ~'+tem1+'℃'+'\n'+'- '+'空气质量：'+air+'\n'+'- '+'PM2.5：'+pm
 
     return(text,weather)
 GetWeather('广州')
