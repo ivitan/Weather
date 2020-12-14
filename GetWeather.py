@@ -1,4 +1,3 @@
-#!/urs/bin/enc python3
 # -*- coding: utf-8 -*-
 from urllib import request
 import re
