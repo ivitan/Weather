@@ -4,4 +4,5 @@
 <h2 align="center">Weather Report</h2>
 </p>
 
-# 每日推送天气预报发送到微信
+# 每日天气
+> 利用 Github Actions 每日推送天气预报，通过 Service 酱 推送到微信
