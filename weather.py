@@ -3,7 +3,6 @@ from urllib.parse import urlencode
 import requests
 import os
 
-
 def GetWeather(ct):
     # 天气接口
     url = "https://tianqiapi.com/api"
@@ -40,20 +39,14 @@ def GetWeather(ct):
     text = week+' - '+wea
     weather = '- '+city+'：'+wea+'\n'+'- '+tem2+'℃ ~ ' + \
         tem1+'℃'+'\n'+'- '+'空气质量：'+air+'\n'+'- '+'PM2.5：'+pm
-
     return(text, weather)
 
-
-GetWeather('广州')
 # Server 酱
-
-
 def SendWechat(title, message):
     # text 为推送 title,desp 为推送描述
     sckey = os.environ['SCKEY']
     url = 'https://sc.ftqq.com/'+sckey+'.send?text='+title+'&desp='+message
     requests.get(url)
-
 
 def main():
     Weathers = GetWeather('广州')
@@ -61,7 +54,6 @@ def main():
     message = Weathers[1]
     print(title, message)
     SendWechat(title, message)
-
 
 if __name__ == '__main__':
     main()
