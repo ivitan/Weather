@@ -1,7 +1,10 @@
 # -*- coding: UTF-8 -*-
 from urllib.parse import urlencode
+from wxpusher import WxPusher
 import requests
 import os
+import json
+
 
 def GetWeather(ct):
     # 天气接口
@@ -9,6 +12,8 @@ def GetWeather(ct):
     # 参数
     apiID = os.environ['apiID']
     appSecret = os.environ['appSecret']
+    WxPusher_UID = os.environ['WxPusher_UID']
+    WxPusher_Token = os.environ['WxPusher_Token']
     data = {}
     data['version'] = 'v6'
     data['appid'] = apiID
@@ -42,18 +47,43 @@ def GetWeather(ct):
     return(text, weather)
 
 # Server 酱
+
+
 def SendWechat(title, message):
     # text 为推送 title,desp 为推送描述
     sckey = os.environ['SCKEY']
     url = 'https://sc.ftqq.com/'+sckey+'.send?text='+title+'&desp='+message
     requests.get(url)
 
+
+def SendMessages(title, message):
+    # PostBody = {
+    #     "content": message,
+    #     "summary": title,
+    #     "contentType": 3,
+    #     "uids": ["UID_ioUHCGOQZ3OrGJabOmSUAYDRyuUu"],
+    #     "appToken": "AT_YE8WU91IIbCF8mHsE9wDEC96pVPsV1ck",
+    #     "url": "https://ivitan.com",
+    # }
+
+    # url = 'http://wxpusher.zjiecode.com/api/send/message'
+    # retutn requests.post(url, json=PostBody).json()
+
+    WxPusher.send_message(
+        summary = title,
+        content=message,
+        uids = WxPusher_UID
+        token = WxPusher_Token
+    )
+
+
 def main():
     Weathers = GetWeather('广州')
     title = Weathers[0]
     message = Weathers[1]
     print(title, message)
-    SendWechat(title, message)
+    SendMessages(title, message)
+
 
 if __name__ == '__main__':
     main()
