@@ -12,8 +12,6 @@ def GetWeather(ct):
     # 参数
     apiID = os.environ['apiID']
     appSecret = os.environ['appSecret']
-    WxPusher_UID = os.environ['WpUID']
-    WxPusher_Token = os.environ['WpTOKEN']
     data = {}
     data['version'] = 'v6'
     data['appid'] = apiID
@@ -57,6 +55,8 @@ def SendWechat(title, message):
 
 
 def SendMessages(title, message):
+    WxPusher_UID = os.environ['WpUID']
+    WxPusher_Token = os.environ['WpTOKEN']
     # PostBody = {
     #     "content": message,
     #     "summary": title,
