@@ -72,8 +72,8 @@ def SendMessages(title, message):
     WxPusher.send_message(
         summary = title,
         content=message,
-        uids = WxPusher_UID
-        token = WxPusher_Token
+        uids = WxPusher_UID,
+        token = WxPusher_Token,
     )
 
 
