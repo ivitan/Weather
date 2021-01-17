@@ -24,4 +24,6 @@ jobs:
           apiID: ${{ secrets.APIID }}
           appSecret: ${{ secrets.APPSECRET }}
           SCKEY: ${{ secrets.SCKEY }}
+          WXPUSHER_UID: ${{ secrets.WXPUSHER_UID }}
+          WXPUSHER_TOKEN: ${{ secrets.WXPUSHER_TOKEN }}
         run: python weather.py
