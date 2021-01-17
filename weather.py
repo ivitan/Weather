@@ -12,8 +12,8 @@ def GetWeather(ct):
     # 参数
     apiID = os.environ['apiID']
     appSecret = os.environ['appSecret']
-    WxPusher_UID = os.environ['WxPusher_UID']
-    WxPusher_Token = os.environ['WxPusher_Token']
+    WxPusher_UID = os.environ['WpUID']
+    WxPusher_Token = os.environ['WpToken']
     data = {}
     data['version'] = 'v6'
     data['appid'] = apiID
