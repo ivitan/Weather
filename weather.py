@@ -55,8 +55,8 @@ def SendWechat(title, message):
 
 
 def SendMessages(title,message):
-    # WxPusher_UID = os.environ['WpUID']
-    # WxPusher_Token = os.environ['WpTOKEN']
+    WxPusher_UID = os.environ['WpUID']
+    WxPusher_Token = os.environ['WpTOKEN']
     headers = {
         'Content-Type': 'application/json',
     }
@@ -64,7 +64,7 @@ def SendMessages(title,message):
         "summary": title + '\n' + message,
         "content": message,
         "contentType": 3,
-        "uids": WxPusher_UID,
+        "uids": [WxPusher_UID],
         "appToken": WxPusher_Token,
     }
 
