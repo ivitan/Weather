@@ -64,7 +64,7 @@ def SendMessages(title,message):
         "summary": title + '\n' + message,
         "content": message,
         "contentType": 3,
-        "uids": [WxPusher_UID],
+        "uids": WxPusher_UID,
         "appToken": WxPusher_Token,
     }
 
