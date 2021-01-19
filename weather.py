@@ -54,35 +54,28 @@ def SendWechat(title, message):
     requests.get(url)
 
 
-def SendMessages(title, message):
-    WxPusher_UID = os.environ['WpUID']
-    WxPusher_Token = os.environ['WpTOKEN']
-    # PostBody = {
-    #     "content": message,
-    #     "summary": title,
-    #     "contentType": 3,
-    #     "uids": ["UID_ioUHCGOQZ3OrGJabOmSUAYDRyuUu"],
-    #     "appToken": "AT_YE8WU91IIbCF8mHsE9wDEC96pVPsV1ck",
-    #     "url": "https://ivitan.com",
-    # }
+def SendMessages(title,message):
+    # WxPusher_UID = os.environ['WpUID']
+    # WxPusher_Token = os.environ['WpTOKEN']
+    headers = {
+        'Content-Type': 'application/json',
+    }
+    data = {
+        "summary": title + '\n' + message,
+        "content": message,
+        "contentType": 3,
+        "uids": [WxPusher_UID],
+        "appToken": WxPusher_Token,
+    }
 
-    # url = 'http://wxpusher.zjiecode.com/api/send/message'
-    # retutn requests.post(url, json=PostBody).json()
-
-    WxPusher.send_message(
-        summary = title,
-        content=message,
-        uids = WxPusher_UID,
-        token = WxPusher_Token,
-    )
-
+    url = 'http://wxpusher.zjiecode.com/api/send/message'
+    requests.post(url=url, data=json.dumps(data), headers=headers)
 
 def main():
     Weathers = GetWeather('广州')
     title = Weathers[0]
     message = Weathers[1]
-    print(title, message)
-    SendWechat(title, message)
+    # SendWechat(title, message)
     SendMessages(title, message)
 
 
