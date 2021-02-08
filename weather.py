@@ -75,7 +75,7 @@ def main():
     Weathers = GetWeather('广州')
     title = Weathers[0]
     message = Weathers[1]
-    # SendWechat(title, message)
+    SendWechat(title, message)
     SendMessages(title, message)
 
 
