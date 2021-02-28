@@ -57,7 +57,7 @@ class WeChat:
             "agentid": self.AGENTID,
             "textcard": {
                 "title": title,
-                "description": '<div class=\"gray\">'+ Today + '</div> <div class=\"normal\">' + message+ '</div><div class=\"highlight\">请注意天气变化哦</div>',
+                "description": '<div class=\"gray\">'+ Today + '</div> <div class=\"highlight\">' + message+ '</div><div class=\"normal\">请注意天气变化哦</div>',
                 "url": "https://ivitan.com",
                 "btntxt": "更多"
             },
