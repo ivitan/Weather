@@ -30,10 +30,10 @@ class WeChat:
         将获取到的access_token保存到本地
         """
         try:
-            with open('./tmp/access_token.conf', 'r') as f:
+            with open('./access_token.conf', 'r') as f:
                 t, access_token = f.read().split()
         except:
-            with open('./tmp/access_token.conf', 'w') as f:
+            with open('./access_token.conf', 'w') as f:
                 access_token = self._get_access_token()
                 cur_time = time.time()
                 f.write('\t'.join([str(cur_time), access_token]))
@@ -43,7 +43,7 @@ class WeChat:
             if 0 < cur_time - float(t) < 7260:
                 return access_token
             else:
-                with open('./tmp/access_token.conf', 'w') as f:
+                with open('./access_token.conf', 'w') as f:
                     access_token = self._get_access_token()
                     f.write('\t'.join([str(cur_time), access_token]))
                     return access_token
