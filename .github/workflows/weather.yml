@@ -23,7 +23,6 @@ jobs:
         env:
           apiID: ${{ secrets.APIID }}
           appSecret: ${{ secrets.APPSECRET }}
-          SCKEY: ${{ secrets.SCKEY }}
-          WpUID: ${{ secrets.WXPUSHER_UID }}
-          WpTOKEN: ${{ secrets.WXPUSHER_TOKEN }}
+          CORPID: ${{ secrets.CORPID }}
+          CORPSECRET: ${{ secrets.CORPSECRET }}
         run: python weather.py

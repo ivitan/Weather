@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 from urllib.parse import urlencode
-from wxpusher import WxPusher
+from WxWorkPush import WeChat
 import requests
 import os
 import json
@@ -10,12 +10,10 @@ def GetWeather(ct):
     # 天气接口
     url = "https://tianqiapi.com/api"
     # 参数
-    apiID = os.environ['apiID']
-    appSecret = os.environ['appSecret']
     data = {}
     data['version'] = 'v6'
-    data['appid'] = apiID
-    data['appsecret'] = appSecret
+    data['appid'] = os.environ['apiID']
+    data['appsecret'] = os.environ['appSecret']
     data['city'] = ct
 
     # 将参数转换成url可用格式
@@ -42,42 +40,16 @@ def GetWeather(ct):
     text = week+' - '+wea
     weather = '- '+city+'：'+wea+'\n'+'- '+tem2+'℃ ~ ' + \
         tem1+'℃'+'\n'+'- '+'空气质量：'+air+'\n'+'- '+'PM2.5：'+pm
-    return(text, weather)
-
-# Server 酱
-
-
-def SendWechat(title, message):
-    # text 为推送 title,desp 为推送描述
-    sckey = os.environ['SCKEY']
-    url = 'https://sc.ftqq.com/'+sckey+'.send?text='+title+'&desp='+message
-    requests.get(url)
-
-
-def SendMessages(title,message):
-    WxPusher_UID = os.environ['WpUID']
-    WxPusher_Token = os.environ['WpTOKEN']
-    headers = {
-        'Content-Type': 'application/json',
-    }
-    data = {
-        "summary": title + '\n' + message,
-        "content": message,
-        "contentType": 3,
-        "uids": [WxPusher_UID],
-        "appToken": WxPusher_Token,
-    }
-
-    url = 'http://wxpusher.zjiecode.com/api/send/message'
-    requests.post(url=url, data=json.dumps(data), headers=headers)
+    Today = tdate
+    return(text, weather,Today)
 
 def main():
     Weathers = GetWeather('广州')
     title = Weathers[0]
     message = Weathers[1]
-    SendWechat(title, message)
-    SendMessages(title, message)
-
+    Today = Weathers[2]
+    wx = WeChat()
+    wx.send_data(title,Today,message)
 
 if __name__ == '__main__':
     main()

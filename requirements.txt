@@ -6,4 +6,3 @@ pycodestyle==2.6.0
 requests==2.25.0
 toml==0.10.2
 urllib3==1.26.2
-wxpusher==2.2.0
