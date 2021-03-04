@@ -1,4 +1,4 @@
-name: 'GitHub Actions Weather Bot'
+name: 'Weather Daily'
  
 on:
   push:
@@ -8,21 +8,26 @@ on:
 jobs:
   Weather-daily:
     runs-on: ubuntu-latest
+
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
+
       - name: 'Set up Python'
         uses: actions/setup-python@v1
         with:
           python-version: 3.7
+
       - name: 'Install requirements'
         run: | 
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name: 'Working'
+
+      - name: 'Send Message'
         env:
           apiID: ${{ secrets.APIID }}
           appSecret: ${{ secrets.APPSECRET }}
           CORPID: ${{ secrets.CORPID }}
           CORPSECRET: ${{ secrets.CORPSECRET }}
-        run: python weather.py
+
+        run: python WeatherScraper.py.py
