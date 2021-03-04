@@ -30,4 +30,4 @@ jobs:
           CORPID: ${{ secrets.CORPID }}
           CORPSECRET: ${{ secrets.CORPSECRET }}
 
-        run: python WeatherScraper.py.py
+        run: python WeatherScraper.py
