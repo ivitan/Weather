@@ -5,6 +5,12 @@ on:
   schedule:
     - cron: '0 23 * * *'
 
+env:
+  apiID: ${{ secrets.APIID }}
+  appSecret: ${{ secrets.APPSECRET }}
+  CORPID: ${{ secrets.CORPID }}
+  CORPSECRET: ${{ secrets.CORPSECRET }}
+
 jobs:
   Weather-daily:
     runs-on: ubuntu-latest
@@ -23,11 +29,5 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: 'Send Message'
-        env:
-          apiID: ${{ secrets.APIID }}
-          appSecret: ${{ secrets.APPSECRET }}
-          CORPID: ${{ secrets.CORPID }}
-          CORPSECRET: ${{ secrets.CORPSECRET }}
-
+      - name: 'Run & Send Message'
         run: python WeatherScraper.py
